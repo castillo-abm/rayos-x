@@ -1,0 +1,41 @@
+body{
+    text-align: center;
+    font-family: Arial;
+}
+
+.contenedor{
+    position: relative;
+    width: 300xp;
+    margin: auto;
+}
+
+.mano{
+    width: 100%;
+}
+
+.mano-x{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+}
+
+.scaner{
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: rgba(0, 255, 0, 7);
+    box-shadow: 0 0 10px grey;
+
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan{
+    0% {top: 0;}
+    100% {top: 100%}
+}

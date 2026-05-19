@@ -1,43 +1,94 @@
 body{
-    text-align: center;
-    font-family: Arial;
-    background-color: black;
-    color: white;
+    background:black;
+    color:white;
+    text-align:center;
+    font-family:Arial;
 }
 
+button{
+    padding:10px 20px;
+    margin-bottom:20px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* CONTENEDOR */
 .contenedor{
-    position: relative;
-    width: 300xp;
-    margin: auto;
+    position:relative;
+    width:300px;
+    height:400px;
+    margin:auto;
+
+    background:#111;
+    overflow:hidden;
 }
 
-.mano{
-    width: 100%;
-}
-
+/* IMÁGENES */
+.mano,
 .mano-x{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
 }
 
-.scaner{
-    position: absolute;
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 5px;
-
-    background: rgba(0, 255, 0, 7);
-    box-shadow: 0 0 10px grey;
-
-    animation: scan 2s linear infinite;
+/* RX */
+.mano-x{
+    opacity:0;
+    transition:opacity 0.4s ease;
+    filter: grayscale(100%) brightness(1.2);
 }
 
-@keyframes scan{
-    0% {top: 0;}
-    100% {top: 100%}
+/*ESCANEO (MITAD DERECHA) */
+.scan-zone{
+    position:absolute;
+    top:0;
+    right:0;
+
+    width:50%;   /*SOLO MITAD */
+    height:100%;
+
+    overflow:hidden;
+    z-index:10;
+}
+
+/* RAYO DENTRO DE LA ZONA */
+.rayo{
+    position:absolute;
+    top:50%;
+    right:-300px;
+
+    transform:translateY(-50%);
+
+    width:0;
+    height:0;
+
+    border-top:140px solid transparent;
+    border-bottom:140px solid transparent;
+    border-right:300px solid rgba(255,255,255,0.9);
+
+    filter:blur(6px);
+
+    transition:right 0.9s ease, opacity 0.4s ease;
+}
+
+/* FLASH */
+.flash{
+    position:absolute;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:white;
+    opacity:0;
+
+    z-index:20;
+
+    transition:opacity 0.2s;
 }
